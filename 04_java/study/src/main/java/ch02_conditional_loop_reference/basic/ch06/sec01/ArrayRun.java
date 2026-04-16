@@ -6,7 +6,7 @@ public class ArrayRun { // 실행용 클래스
     public static void main(String[] args) {
 
         ArrayExample2 arr2 = new ArrayExample2();
-        arr2.ex1();
+        arr2.ex2();
     }
 
 }
