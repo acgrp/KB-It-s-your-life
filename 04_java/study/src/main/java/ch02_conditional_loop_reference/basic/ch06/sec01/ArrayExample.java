@@ -54,6 +54,12 @@ public class ArrayExample {
         // -> arr 변수가 int[]을 참조하게 된다!
 
         // 2-3. 배열 요소 값 대입
+        // arr은 int[] 참조변수지만
+        // arr[0]은 int 자료형 변수기 때문에
+        // 정수값 대입 가능하다!
+        arr[0] = 10;
+        arr[1] = 20;
+        arr[2] = 30;
 
         // 2-4. 배열 요소 값 출력
         System.out.println(arr[0]);
