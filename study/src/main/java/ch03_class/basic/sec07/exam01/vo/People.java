@@ -1,6 +1,10 @@
 package main.java.ch03_class.basic.sec07.exam01.vo;
 
-public class People {
+public class People extends Object{
+    // class명에 상속 구문이 없다면
+    // 컴파일러가 자동으로 extends Object 추가
+    // Object : 최상위 부모 클래스
+
 
     // 클래스란? 객체를 만들기 위한 설계도
     // -> 객체의 특성(속성, 기능)을 정의한 것
@@ -61,5 +65,41 @@ public class People {
         return age;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public void setGender(char gender) {
+        // 외부로부터 전달받은 gender를
+        // 현재 객체의 속성 중 gender(==this.gender)에 대입
+        this.gender = gender;
+        // 모든 메소드 종료 시 호출한 곳으로 돌아가는
+        // return 구문이 작성되야 하지만
+        // void인 경우 생략 가능하다.
+        // -> 생략 시 컴파일러가 자동 추가
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // Object.toString() 메서드 오버라이딩 (재정의)
+
+    // *** 오버라이딩 성립 조건 ***
+    // 1. 메소드 이름 동일
+    // 2. 반환형 동일
+    // 3. 매개변수 동일
+    // 4. 접근제한자 같거나 더 넓은 범위
+    //    ex) (부) protected -> (자) protected 또는 public
+    // 5. 예외처리 범위는 같거나 더 좁게
+
+
+    @Override
+    public String toString() {
+        return "People{" +
+                "name='" + name + '\'' +
+                ", gender=" + gender +
+                ", age=" + age +
+                '}';
+    }
 }

@@ -78,5 +78,18 @@ public class ClsService extends Student {
         System.out.println("p = " + p.getGender());
         System.out.println("p = " + p.getAge());
 
+        // 성별 '남' -> '여'로 변경
+        p.setGender('여');
+
+        //-----------------------------------------------
+        // 1) People 클래스의 toString() 오버라이딩 전
+        // -> Object의 toString() 호출
+        System.out.println(p);
+        System.out.println(p.toString());
+        // print 수행 시 참조변수명만 작성하는 경우
+        // 자동으로 toString() 메서드를 호출해서 출력함
+
+        // 2) People 클래스의 toString() 오버라이딩 후
+        // -> 오버라이딩된 자식(People)의 toString() 호출
     }
 }

@@ -10,6 +10,7 @@ public class ClaRun {
 
         ClsService service = new ClsService();
         // service.ex1(); // 접근 제한자 예제 확인
-        service.ex2(); // static 예제 확인
+//        service.ex2(); // static 예제 확인
+        service.ex3(); // static 예제 확인
     }
 }
