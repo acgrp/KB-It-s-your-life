@@ -31,7 +31,6 @@ public class Apple extends Phone{
         // 반드시 자식 생성자 최상단에 작성되야 함
         super(model, color);
         this.iosVersion = iosVersion;
-
         System.out.println("Apple 생성자 실행");
     }
 

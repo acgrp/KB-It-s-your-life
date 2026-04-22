@@ -15,6 +15,7 @@ public class Phone {
         System.out.println("매개변수 생성자 실행");
     }
 
+
     public String getModel() {
         return model;
     }
