@@ -3,8 +3,8 @@ package main.java.ch03_class.basic.ch08.sec09;
 public class ExtendsExample {
 
     public static void main(String[] args) {
-        ch08.sec09.InterfaceCImpl impl = new ch08.sec09.InterfaceCImpl();
-        ch08.sec09.InterfaceA ia = impl;
+        InterfaceCImpl impl = new InterfaceCImpl();
+        InterfaceA ia = impl;
         ia.methodA();
         System.out.println();
         InterfaceB ib = impl;
