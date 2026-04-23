@@ -1,4 +1,6 @@
-package ch08.sec08;
+package main.java.ch03_class.basic.ch08.sec08;
+
+import ch08.sec08.SmartTelevision;
 
 public class MultiInterfaceImplExample {
 
