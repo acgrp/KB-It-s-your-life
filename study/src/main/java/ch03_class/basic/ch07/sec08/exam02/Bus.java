@@ -1,6 +1,8 @@
-package main.java.ch03_class.basic.ch07.sec08.exam02;
+package ch07.sec08.exam02;
 
-public class Bus extends Vehicle{
+import ch08.sec10.exam02.Vehicle;
+
+public class Bus implements Vehicle {
 
     @Override
     public void run() {
