@@ -117,7 +117,6 @@ public class MainService {
     // 단, 이미 중복되는 아이디가 존재하는 경우 가입 불가
     private void signUp() {
 
-
         System.out.println("[회원 가입]");
         System.out.print("아이디 : ");
         String id = sc.nextLine();
@@ -141,7 +140,7 @@ public class MainService {
         System.out.println("*** 회원 가입이 완료되었습니다. ***");
         members.add(member);
 
-        System.out.println(members);
+//        System.out.println(members);
 
     }
 
@@ -165,10 +164,6 @@ public class MainService {
             }
 
             System.out.println("아이디 또는 비밀번호가 일치하지 않습니다.");
-
         }
-
     }
-
-
 }
