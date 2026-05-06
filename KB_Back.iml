@@ -8,7 +8,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lombok-1.18.40" level="project" />
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
@@ -19,5 +18,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="day8-libs-1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="lombok-1.18.40" level="project" />
   </component>
 </module>
