@@ -9,5 +9,4 @@ public class UpDownCollectionRun {
         MainService mainService = new MainService();
         mainService.displayMenu();
     }
-
 }
