@@ -1,0 +1,9 @@
+diff a/.idea/libraries/day8_libs_1_0_SNAPSHOT.xml b/.idea/libraries/day8_libs_1_0_SNAPSHOT.xml	(rejected hunks)
+@@ -1,7 +1,7 @@
+ <component name="libraryTable">
+   <library name="day8-libs-1.0-SNAPSHOT">
+     <CLASSES>
++      <root url="jar://$PROJECT_DIR$/../tools/day8-libs-1.0-SNAPSHOT.jar!/" />
+     </CLASSES>
+     <JAVADOC />
+     <SOURCES />
