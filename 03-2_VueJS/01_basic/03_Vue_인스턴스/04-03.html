@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 2) num 데이터 바인딩 -> 값 입력 시 data 옵션에 작성된 num값 변경 -->
+      1보다 큰 수: <input type="text" v-model.number="num" />
+      <br />
+      <!-- 4) sum() 반환값 바인딩 -> 변경된 num값으로 다시 랜더링 -->
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // 1) data 옵션에서 객체 return -> proxy로 매핑
+          // -> 추적, 관찰 수행
+          return { num: 0 };
+        },
+        computed: {
+          // 3) data 옵션에 작성된 num값 변경 시
+          //    computed 옵션에 작성된 sum() 수행
+          sum() {
+            // this.num == data 옵션에 작성된 num값
+            console.log('num : ' + this.num);
+            let n = parseInt(this.num);
+            // parseInt(문자) : 숫자로 변경
+
+            // NaN(Not a Number) : 숫자가 아님
+            // Number.isNaN(값) : NaN이 맞으면 true, 아니면 false 반환
+            if (Number.isNaN(n)) return 0;
+            // return : 값 반환 및 함수 종료
+
+            // 1부터 n까지의 합 공식
+            return (n * (n + 1)) / 2;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

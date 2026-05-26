@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    - v-model 디렉티브
+    * 양방향 데이터 바인딩 
+    - Model 변경이 View에 영향을 주고, View 변경이 Model에 영향을 줌
+
+    * 형식
+    <태그명 v-model="속성">
+    
+    -->
+    <div id="app">
+      <input type="text" v-model="name" />
+      <br />
+      입력한 값: <span>{{name}}</span>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // Vue 애플리케이션 인스턴스를 생성하고 변수 vm에 할당
+      const vm = Vue.createApp({
+        name: 'App', // 애플리케이션의 이름을 App으로 설정
+        data() {
+          // 컴포넌트의 반응형 데이터를 정의하는 함수
+          return { name: '' }; // name이라는 빈 문자열 속성을 가진 객체 반환
+          // ->  name 데이터는 v-model에 의해서 input과 바인딩됨
+          // -> input 요소의 값이 변경되면 name 데이터가 자동으로 업데이트되고,
+          // -> name 데이터가 변경되면 input 요소의 값이 자동으로 업데이트됨
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

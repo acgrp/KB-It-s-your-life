@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    * v-bind 디렉티브
+    
+    - 요소의 속성을 바인딩
+    - 속성 값을 문자열이 아닌 js 표현식으로 처리
+    - 속성 이름과 데이터 모델의 속성 이름이 같으면 생략 가능
+
+    * 형식
+    - <태그명 v-bind:속성="표현식">
+    - <태그명 :속성="표현식">
+
+    * v-bind 특징
+    - 단방향
+    -> Vue 인스턴스의 데이터가 바뀌면 UI를 갱신
+    -> 화면의 바인딩된 요소에서 값을 변경하더라도 데이터 변경 안됨
+    
+    -->
+    <div id="app">
+      <!-- Vue 인스턴스의 message  데이터 바인딩-->
+      <input type="text" v-bind:value="message" />
+      <br />
+
+      <!-- v-bind:src 축약 표현 == :src -->
+      <img :src="imagePath" />
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            message: 'v-bind 디렉티브',
+            imagePath: 'https://contactsvc.bmaster.kro.kr/photos/18.jpg',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

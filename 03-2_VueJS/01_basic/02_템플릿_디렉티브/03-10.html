@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-if</title>
+  </head>
+  <body>
+    <!-- 
+      v-if 디렉티브
+      - 화면에 보여줄지 말지 결정하는 디렉티브(조건부 랜더링)
+      - HTML 요소를 생성하거나 제거함
+    -->
+
+    <!-- 
+      * v-if와 v-show 차이점
+        - v-if는 조건이 거짓이면 요소를 완전히 제거함(요소 존재 X)
+        - v-show는 조건이 거짓이면 요소를 보이지 않게 만듦(요소 존재 O, 보이지만 않음)
+    -->
+
+    <div id="app">
+      예금액: <input type="text" v-model.number="amount" />
+
+      <img
+        v-if="amount < 0"
+        src="https://contactsvc.bmaster.kro.kr/img/error.png"
+        title="마이너스는 허용하지 않습니다."
+        style="width: 15px; height: 15px; vertical-align: middle"
+      />
+
+      <script src="http://unpkg.com/vue"></script>
+
+      <script>
+        let vm = Vue.createApp({
+          name: 'App',
+          data() {
+            return { amount: '' };
+          },
+        }).mount('#app');
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-for 디렉티브</title>
+
+    <style>
+      #list {
+        width: 600px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      #list td,
+      #list th {
+        border: 1px solid black;
+        text-align: center;
+      }
+      #list > thead > tr {
+        color: yellow;
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+    v-for 디렉티브
+    - 반복 랜더링을 위한 디렉티브
+    - 배열이나 객체를 순회하며 요소를 렌더링함
+
+    <태그명 v-for="item in items" :key="item.id">
+      {{item.name}}
+    </태그명>
+
+    - :key 속성
+      - 반복 요소의 고유 식별자를 지정
+      - 반복 요소의 고유 식별자를 지정하지 않으면 오류 발생
+      - 배열 순회 시 index를 :key로 지정하는 것은 매우 좋지 않음!!
+        왜? 데이터가 바뀌어도 Vue가 같은 DOM으로 착각해서 DOM 재사용이 꼬일 수 있음
+  -->
+
+    <div id="app">
+      <table id="list">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>전화번호</th>
+          </tr>
+        </thead>
+        <tbody id="contacts">
+          <!-- 객체 배열 순회 -->
+          <tr v-for="contact in contacts" :key="contact.no">
+            <td>{{contact.no}}</td>
+            <td>{{contact.name}}</td>
+            <td>{{contact.tel}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+      const contacts = [
+        { no: 1011, name: 'RM', tel: '010-3456-8299' },
+        { no: 1012, name: '정국', tel: '010-3456-8298' },
+        { no: 1013, name: '제이홉', tel: '010-3456-8297' },
+        { no: 1014, name: '슈가', tel: '010-3456-8296' },
+      ];
+      const vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { contacts: contacts };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

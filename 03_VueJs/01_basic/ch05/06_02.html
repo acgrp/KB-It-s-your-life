@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+        <!-- :style=style1 : 해당 태그에 대한 스타일 적용  -->
+         <!-- @mouseover : 마우스가 버튼위로/ @mouseout : 마우스가 버튼 위에서 나왔을때-->
+          <!-- stop : 버블링(상위 태그에서 이벤트 발생)을 못하게 막음 -->
+      <button :style="style1" @mouseover.stop="overEvent" @mouseout.stop="outEvent">테스트</button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: "App",
+        data() {
+          return {
+            style1: {
+              backgroundColor: "aqua",
+              color: "black",
+            },
+          };
+        },
+        methods: {
+            // button에서 해당하는 이벤트 발생시 작동
+            overEvent() {
+                this.style1.backgroundColor = "purple";
+                this.style1.color = "yellow";
+            },
+            outEvent() {
+                this.style1.backgroundColor = "aqua";
+                this.style1.color ="black";
+            }
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

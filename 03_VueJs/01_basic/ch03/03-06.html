@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    checkbox에는 false와 ture만 존재 
+      ->  true-value로 true값을 yes로 변환
+      -> false-value로 false값을 no로 변환
+    -->
+    <div id="app">
+      위의 내용에 동의하십니까?
+      <input
+        type="checkbox"
+        v-model="agree"
+        true-value="yes"
+        false-value="no"
+      />
+      <hr />
+
+      <span>선택된 값 : {{agree}}</span>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      const vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            agree: 'no',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

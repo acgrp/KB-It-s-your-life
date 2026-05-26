@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <excludedPredefinedLibrary name="workspace/test/moduleTest/todolist-app-practice/node_modules" />
+    <excludedPredefinedLibrary name="workspace/workspace/03_VueJs/01_basic/11_axios/axios-test-app/node_modules" />
+    <excludedPredefinedLibrary name="workspace/workspace/03_VueJs/01_basic/12_pinia상태관리/pinia-app/node_modules" />
+    <excludedPredefinedLibrary name="workspace/workspace/test/moduleTest/todolist-app-practice/node_modules" />
+  </component>
+</project>

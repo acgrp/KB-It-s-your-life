@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 
+    Vue.js 와 MVVM패턴
+
+      - Model - ViewModel - View  
+      - Model 변화를 View에 반영
+      - View는 Model의 변화를 실시간으로 반영 
+      - ViewModel은 뷰와 모델 사이의 중개자 역할을 합니다.
+    -->
+
+      <!-- Vue 디렉티브
+      - v-로 시작하는 속성
+      - HTML 요소와 관련된 작업을 지정
+
+      v-text: 텍스트 렌더링
+      v-html: HTML 렌더링
+      v-bind: 속성 바인딩
+      v-on: 이벤트 핸들러
+      v-model: 양방향 데이터 바인딩
+      v-if, v-else-if, v-else: 조건부 렌더링
+      v-for: 반복문
+      v-show: 요소 표시 여부
+    -->
+
+      <!-- 블럭 텍스트 렌더링 -->
+      <h2>Hi {{message}}</h2>
+
+      <!-- v-text 텍스트 렌더링 -->
+      <h2 v-text="message">Hi</h2>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var model = { message: 'Hello Vue3!' };
+      // Vue 인스턴스 생성
+      var vm = Vue.createApp({
+        name: 'App', // 애플리케이션 이름 설정
+        data() {
+          // 컴포넌트의 반응형 데이터 정의
+          // data() 함수가 반환하는 객체의 속성들은 Vue의 반응형 시스템에 의해 관리됨
+          // -> 반환되는 model 객체의 message 속성값이 수정되면
+          //    v-text="message" / {{message}} 요소가 수정됨
+          return model;
+        },
+      }).mount('#app');
+      // mount : 올라타다, 설치하다, 부착하다
+      // mount('#app') : #app인 DOM 요소에 Vue 애플리케이션 마운트
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+.form-control-sm {
+  padding: 2px 5px;
+  height: 28px;
+}
+
+.form-select-sm {
+  padding: 2px 5px;
+  height: 28px;
+}
+
+td {
+  vertical-align: middle;
+}
+.form-control-sm {
+  padding: 2px 5px;
+  height: 28px;
+}
+
+.form-select-sm {
+  padding: 2px 5px;
+  height: 28px;
+}
+
+td {
+  vertical-align: middle;
+}
+
+/* 테이블 열 너비 고정 */
+.table th:nth-child(1),
+.table td:nth-child(1) {
+  width: 15%; /* 이름 열 */
+}
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  width: 15%; /* 성별 열 */
+}
+.table th:nth-child(3),
+.table td:nth-child(3) {
+  width: 10%; /* 나이 열 */
+}
+.table th:nth-child(4),
+.table td:nth-child(4) {
+  width: 25%; /* 이메일 열 */
+}
+.table th:nth-child(5),
+.table td:nth-child(5) {
+  width: 20%; /* Github ID 열 */
+}
+.table th:nth-child(6),
+.table td:nth-child(6) {
+  width: 15%; /* 관리 버튼 열 */
+}

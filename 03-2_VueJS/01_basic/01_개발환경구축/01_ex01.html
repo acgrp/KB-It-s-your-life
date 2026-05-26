@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Ex</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- View : 보여지는 부분 -->
+      <!-- Vue의 템플릿 문법 : 이중 중괄호(Mustache)를 사용한 텍스트 보간법 -->
+      <!-- data()에서 반환된 message 속성 값이 여기에 랜더링됨 -->
+      <h2>{{message}}</h2>
+    </div>
+
+    <!-- Vue 라이브러리 CDN(Content Delivery Network) 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+
+    <script>
+      /* Model : 비즈니스 로직 결과(데이터) */
+      let model = { message: 'Hello Vue3!!!' };
+
+      /* View Model : View에 Model 데이터 연결 */
+      const vm = Vue.createApp({
+        name: 'App', // 애플리케이션 이름 설정
+        data() {
+          // 컴포넌트의 반응형 데이터 정의
+          // 이 함수가 반환하는 객체의 속성들은 Vue의 반응형 시스템에 의해 관리됨
+          return model;
+        },
+      }).mount('#app'); // #app 선택자에 해당하는 DOM 요소에 Vue 애플리케이션 마운트
+      // mount() : Vue 애플리케이션이 실제 DOM에 연결되는 지점을 지정
+    </script>
+  </body>
+</html>

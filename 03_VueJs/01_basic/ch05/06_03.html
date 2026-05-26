@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- style에 backgroundColor, color을 담기 -->
+       <!-- over out 이벤트도 적용 -->
+      <button :style="{backgroundColor, color}"
+      @mouseover.stop="overEvent"
+      @mouseout.stop="outEvent"
+      >테스트</button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+      name: "App",
+      data() {
+      return {
+      backgroundColor: "aqua",
+      color: "black",
+      };
+      },
+      methods: {
+        // 이벤트 이름과 미리 선언해두었던 이름 사용
+        overEvent() {
+            this.backgroundColor="purple";
+            this.color="yellow";
+        },
+        outEvent() {
+            this.backgroundColor = "aqua";
+            this.color="black";
+        }
+      
+      },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      1보다 큰 수: <input type="text" v-model="num" />
+      <br />
+      1부터 입력한 값까지의 합: <span>{{sum()}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum()}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum()}}</span><br />
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { num: 0 };
+        },
+        methods: {
+          // Vue 인스턴스가 사용할 함수를 정의하는 속성
+
+          sum() {
+            /* sum 함수 정의 
+
+            함수명 -> 함수명 자체
+            함수명() -> 함수의 반환값을 얻고자 할때
+
+            computed는 해당 함수에서 계산해서 나오기때문에 가능(캐시)
+            */
+            console.log('num : ' + this.num);
+            let n = parseInt(this.num);
+            if (Number.isNAn(n)) {
+              return 0;
+            }
+            return (n * (n + 1)) / 2;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
