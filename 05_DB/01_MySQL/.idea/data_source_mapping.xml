@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/f521e79d-f76b-4753-b4c0-8d671d62afea/console.sql" value="f521e79d-f76b-4753-b4c0-8d671d62afea" />
+    <file url="file://$PROJECT_DIR$/03_SQL기본/basic/03_SQL_기본.sql" value="f521e79d-f76b-4753-b4c0-8d671d62afea" />
+    <file url="file://$PROJECT_DIR$/03_SQL기본/basic/03_SQL_심화.sql" value="f521e79d-f76b-4753-b4c0-8d671d62afea" />
+    <file url="file://$PROJECT_DIR$/03_SQL기본/수업용Script/01_dpl_select1.sql" value="f521e79d-f76b-4753-b4c0-8d671d62afea" />
+    <file url="file://$PROJECT_DIR$/03_SQL기본/수업용Script/02_dpl_select2.sql" value="f521e79d-f76b-4753-b4c0-8d671d62afea" />
+    <file url="file://$PROJECT_DIR$/03_SQL기본/수업용Script/menudb.sql" value="f521e79d-f76b-4753-b4c0-8d671d62afea" />
+    <file url="file://$PROJECT_DIR$/04_SQL기본/advance/04_SQL_심화.sql" value="f521e79d-f76b-4753-b4c0-8d671d62afea" />
+    <file url="file://$PROJECT_DIR$/04_SQL기본/basic/과제제출.sql" value="f521e79d-f76b-4753-b4c0-8d671d62afea" />
+  </component>
+</project>

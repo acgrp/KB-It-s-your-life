@@ -4,8 +4,5 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/01_HTML-CSS-JS" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/04_java" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/workspace" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/workspace/01_HTML-CSS-JS" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/workspace/04_java" vcs="Git" />
   </component>
 </project>
