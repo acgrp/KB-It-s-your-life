@@ -95,54 +95,94 @@ select menu_name, menu_price, if(menu_price < 10000, '싸다', '비싸다') '가
 
 # sum(컬럼)
 # - null이 아닌 컬럼의 합
+-- 메뉴 가격 총합 구하기
+-- select menu_name, sum(menu_price) from tbl_menu;
 
+    select sum(menu_price) from tbl_menu;
 
-
-
-
+-- 카테고리 코드가 10번인 메뉴들의 가격 합계 조회
+select category_code, sum(menu_price) from tbl_menu
+where category_code = 10;
 
 # avg(컬럼) -> 평균값
 # - null인 컬럼은 제외한 평균값
-
-
+select truncate(avg(menu_price), 0) from tbl_menu;
 
 # count(컬럼) -> 개수
 # - null인 컬럼은 제외하고 개수 집계
+select count(*),
+       count(menu_price)
+from tbl_menu;
 
+insert into tbl_menu values(22, '순대쉐이크', null, null, 'Y');
 
+commit;
+-- menu_price, category_code 제약조건 변경
+alter table tbl_menu modify menu_price int null;
+alter table tbl_menu modify category_code int null;
 
 # 카테고리코드가 null이 아닌 행 개수 조회
-
-
-
+select count(*) from tbl_menu
+where category_code is not null;
+select count(category_code) from tbl_menu;
 
 # max/min
 # - 숫자/문자열/날짜시간에 대해 최대/최소값을 반환
-
-
-
+select max(tbl_menu.menu_price),
+       min(tbl_menu.menu_price),
+       max(tbl_menu.menu_name),
+       min(tbl_menu.menu_name)
+from tbl_menu;
 
 -- =====================================================
 # group by 구문
 # - 특정컬럼을 기준으로 grouping을 수행
 # - 그룹함수와 함께 사용
-
+select category_code, -- 그룹핑 기준 컬럼
+       count(*),
+       avg(menu_price)
+from tbl_menu
+group by category_code;
 
 # 주문가능 여부에 따른 메뉴개수 집계
-
-
+select orderable_status ,count(*) from tbl_menu
+group by orderable_status;
 
 # 두개이상 컬럼에 대해서 그룹핑 가능
-
-
+select category_code, orderable_status ,count(*) from tbl_menu
+group by orderable_status, category_code
+order by category_code;
 
 # having 조건절
 # - 그룹핑된 결과에 대한 조건절
 # - where절과 달리 그룹함수 작성가능하다.
 
 # 카테고리별 메뉴개수가 2개이상인 카테고리(카테고리명, 개수) 조회
-
+select category_code, count(*) from tbl_menu
+group by category_code
+having count(*) >= 2;
 
 
 # 카테고리별 메뉴 개수 조회 (단, category_code가 NULL인 그룹 제외)
 # 일반적인 조건절
+select category_code, count(*) from tbl_menu
+where category_code is not null  -- having도 가능
+group by category_code;
+
+-- 이유
+-- HAVING : 그룹 생성 후 null 제거
+-- WHERE : 그룹 생성 전 null 제거
+
+select category_code,
+       count(*) cnt
+from tbl_menu
+where category_code is not null
+group by category_code
+having cnt > 2
+order by cnt;
+
+select c.category_name, count(*) cnt from tbl_menu t
+join tbl_category c on t.category_code = c.category_code
+group by category_name
+having cnt > 2
+order by cnt;
