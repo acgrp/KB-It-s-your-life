@@ -1,2 +1,5 @@
 .vscode
 node_modules/
+
+# 설정 파일 제외
+**/application.properties

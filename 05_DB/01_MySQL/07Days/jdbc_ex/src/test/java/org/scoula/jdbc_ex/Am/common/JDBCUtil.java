@@ -1,4 +1,4 @@
-package org.scoula.jdbc_ex.common;
+package org.scoula.jdbc_ex.Am.common;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -6,13 +6,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class JDBUtil {
+public class JDBCUtil {
 
     static Connection conn = null;
     static {
         try{
             Properties properties = new Properties();
-            properties.load(JDBUtil.class.getResourceAsStream("/application.properties"));
+            properties.load(JDBCUtil.class.getResourceAsStream("/application.properties"));
             String driver = properties.getProperty("driver"); // 데이터베이스 접속에 필요한 정보를 추출하는 것:
             String url = properties.getProperty("url");
             String username = properties.getProperty("username");
