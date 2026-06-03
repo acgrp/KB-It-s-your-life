@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/jdbc_ex/src/main/java/org/edu/member/dao/MemberDaoImpl.java" value="eef02224-609c-4676-8923-c81e70f180d8" />
+    <file url="file://$PROJECT_DIR$/jdbc_ex/src/main/java/org/edu/member/dao/MemberDaoImplJjs.java" value="eef02224-609c-4676-8923-c81e70f180d8" />
+  </component>
+</project>

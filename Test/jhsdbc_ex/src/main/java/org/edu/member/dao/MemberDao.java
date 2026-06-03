@@ -11,7 +11,7 @@ public interface MemberDao {
 
     void selectAll() throws SQLException;
 
-    int select(Member m) throws SQLException;
+    void select(Member m) throws SQLException;
 
     int update(Member m) throws SQLException;
 

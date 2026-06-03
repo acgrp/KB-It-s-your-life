@@ -103,4 +103,10 @@ public class MemberDaoImpl implements MemberDao{
             return result;
         }
     }
+
+    @Override
+    public void selectAll() throws SQLException {
+
+    }
+
 }

@@ -1,5 +1,6 @@
 package org.edu.member.dao;
 
+import com.mysql.cj.protocol.Resultset;
 import org.edu.member.common.JDBCUtil;
 import org.edu.member.vo.Member;
 
@@ -8,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MemberDaoImplJjs implements MemberDao {
+public class MemberDaoImpl implements MemberDao {
 
     private Connection conn = JDBCUtil.getConnection();
 
@@ -53,7 +54,7 @@ public class MemberDaoImplJjs implements MemberDao {
     }
 
     @Override
-    public int select(Member m) throws SQLException {
+    public void select(Member m) throws SQLException {
         String sql = "SELECT * FROM members WHERE no = ?";
 
         try(PreparedStatement pstm = conn.prepareStatement(sql)){
@@ -73,7 +74,6 @@ public class MemberDaoImplJjs implements MemberDao {
                 }
             }
         }
-        return 0;
     }
 
     @Override
