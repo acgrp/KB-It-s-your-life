@@ -2,6 +2,7 @@ package org.edu.member.service;
 
 import org.edu.member.dao.MemberDao;
 import org.edu.member.dao.MemberDaoImpl;
+import org.edu.member.dao.MemberDaoImplJjs;
 import org.edu.member.vo.Member;
 
 import java.sql.SQLException;
@@ -11,7 +12,9 @@ public class MemberService {
 
     private Scanner sc = new Scanner(System.in);
 
-    private MemberDao dao = new MemberDaoImpl();
+//    private MemberDao dao = new MemberDaoImpl();
+
+    private MemberDao dao = new MemberDaoImplJjs();
 
     public void displayMenu() {
 
@@ -26,6 +29,7 @@ public class MemberService {
                 System.out.println("3. 회원 정보 조회");
                 System.out.println("4. 회원 수정");
                 System.out.println("5. 회원 삭제");
+                System.out.println("6. 회원 부서명 조회");
                 System.out.println("0. 종료");
                 System.out.print("메뉴 선택 >> ");
 
@@ -49,7 +53,9 @@ public class MemberService {
                     case 5:
                         delete();
                         break;
-
+                    case 6:
+                        getDeptName();
+                        break;
                     case 0:
                         System.out.println("[프로그램 종료]");
                         break;
@@ -154,5 +160,21 @@ public class MemberService {
 
         if(result > 0) System.out.println("회원 삭제 완료");
         else System.out.println("삭제 실패 ㅠㅠㅠ");
+    }
+
+    //회원번호가 일치하는 회원의 번호, 이름, 부서코드, 부서명 조회
+    private void getDeptName() throws SQLException {
+
+        System.out.println("=== 회원의 부서명 조회 ===");
+
+        System.out.print("찾을 회원 번호 : ");
+        int no = sc.nextInt();
+
+        Member member = new Member();
+
+        member.setNo(no);
+
+        dao.getDeptName(member);
+
     }
 }

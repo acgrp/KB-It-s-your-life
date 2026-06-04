@@ -18,8 +18,8 @@ public class JDBCUtil {
 
             String driver = properties.getProperty("driver");
             String url = properties.getProperty("url");
-            String id = properties.getProperty("id");
-            String pw = properties.getProperty("pw");
+            String id = properties.getProperty("edu.id");
+            String pw = properties.getProperty("edu.pw");
 
             Class.forName(driver);
             conn= DriverManager.getConnection(url,id,pw);

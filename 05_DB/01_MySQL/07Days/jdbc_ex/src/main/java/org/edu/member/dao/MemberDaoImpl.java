@@ -105,6 +105,33 @@ public class MemberDaoImpl implements MemberDao{
     }
 
     @Override
+    public void getDeptName(Member m) throws SQLException {
+        String sql = "select m.no, m.name, d.dept_no, d.dept_name from members m join departments d on m.dept_no = d.dept_no where m.no = ?";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, m.getNo());
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+
+                if(rs.next()){
+                    // no == pk == 조회시 1행
+
+                    Member mem = new Member();
+                    mem.setNo(rs.getInt("no"));
+                    mem.setName(rs.getString("name"));
+                    mem.setDeptNo(rs.getInt("dept_no"));
+                    mem.setDeptName("dept_name");
+
+
+                }
+
+            }
+
+
+        }
+    }
+
+    @Override
     public void selectAll() throws SQLException {
 
     }

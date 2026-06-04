@@ -16,12 +16,8 @@ public class Member {
     private String pw;
     private String name;
     private String role;
+    private int deptNo;
+    private String deptName;
     private char deleted_yn;
 
-    public Member(String id, String pw, String name, String role) {
-        this.id = id;
-        this.pw = pw;
-        this.name = name;
-        this.role = role;
-    }
 }
