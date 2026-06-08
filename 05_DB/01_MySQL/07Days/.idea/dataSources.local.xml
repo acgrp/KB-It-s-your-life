@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-253.30387.90">
+    <data-source name="@localhost" uuid="b72209d3-d112-4ccc-a48d-4b744d245a4f">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <schema-mapping />
+    </data-source>
+    <data-source name="jjs" uuid="eef02224-609c-4676-8923-c81e70f180d8">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.scoula.jdbc_ex.test.ConnectionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-06-01T07:27:59.827Z" hostname="M6F" time="0.27">
+  <properties/>
+  <testcase name="jdbc_ex 데이터베이스에 접속한다." classname="org.scoula.jdbc_ex.test.ConnectionTest" time="0.27"/>
+  <system-out><![CDATA[DB 연결 성공
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
