@@ -8,29 +8,29 @@
         web.xml : 웹 애플리케이션 배포 서술자(Deployment Descriptor)
 
         - 웹 애플리케이션의 설정 정보를 담은 XML 파일
-           서블릿, 필터, 리스너 등의 구성 요소 등록 및 매핑
+          서블릿, 필터, 리스너 등의 구성 요소 등록 및 매핑
 
         - Tomcat 등의 웹 컨테이너가 시작 될 때 읽음
-      -->
-
-<!--  Servlet 등록
-      - Servlet 클래스 정보를 웹 컨테이너에게 알려줌
-      - 클래스 정보가 길기 때문에 별칭(helloServlet) 등록
-  -->
-    <servlet>
-        <servlet-name>helloServlet</servlet-name>
-        <servlet-class>org.edu.servletproject.HelloServlet</servlet-class>
-    </servlet>
-
-<!--  Servlet 매핑
-        -"/hello-servlet" 주소 요청 시
-        웹 컨테이너에 등록된 servlet 중 별칭이 "helloServlet"인 클래스를 찾음
-        -> Servlet Container가 해당 클래스를 객체로 만들어서 관리
     -->
 
+    <!-- Servlet 등록
+         - Servlet 클래스 정보를 웹 컨테이너에게 알려줌
+         - 클래스 정보가 길기 때문에 별칭(helloServlet) 등록
+    -->
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <servlet-class>org.edu.servlet.HelloServlet</servlet-class>
+    </servlet>
+
+    <!-- Servlet 매핑
+        - "/hello-servlet" 주소 요청 시
+          웹 컨테이너에 등록된 servlet 중 별칭이 "helloServlet"인 클래스를 찾음
+          -> Servlet Container가 해당 클래스를 객체로 만들어서 관리
+    -->
+    
     <servlet-mapping>
         <servlet-name>helloServlet</servlet-name>
-        <url-pattern>/hello-Servlet</url-pattern>
+        <url-pattern>/hello-servlet</url-pattern>
     </servlet-mapping>
 
 </web-app>
