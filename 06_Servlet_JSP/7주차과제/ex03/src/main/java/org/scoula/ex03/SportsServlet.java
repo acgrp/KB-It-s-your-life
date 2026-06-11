@@ -1,4 +1,4 @@
-package org.edu.ex03;
+package org.scoula.ex03;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

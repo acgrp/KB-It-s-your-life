@@ -39,7 +39,7 @@ public class PizzaOrderServlet extends HttpServlet {
 
         // * 해결 방법 *
         // - POST 방식으로 전달 받은 데이터의 문자 인코딩을 UTF-8로 변경
-        req.setCharacterEncoding("UTF-8");
+//        req.setCharacterEncoding("UTF-8");
 
         String pizza = req.getParameter("pizza");
         String size = req.getParameter("size");
