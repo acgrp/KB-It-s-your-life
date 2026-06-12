@@ -22,16 +22,14 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-
-    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
-    compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation 'javax.servlet:jstl:1.2'
     implementation 'org.projectlombok:lombok:1.18.38'
     annotationProcessor 'org.projectlombok:lombok:1.18.38'
 
-    implementation 'javax.servlet:jstl:1.2'
+    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 test {

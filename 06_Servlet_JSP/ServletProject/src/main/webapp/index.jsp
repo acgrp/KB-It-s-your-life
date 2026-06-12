@@ -34,5 +34,19 @@
     <hr>
 
     <a href="scope">Servlet/JSP 내장 객체와 범위</a>
+
+
+    <hr>
+
+    <a href="/el/login_form.jsp">EL 기초</a>
+
+<hr>
+    <a href="scope/test">Page, Request, Session, Application Scope 비교</a>
+
+<hr>
+    <a href="/el_example">EL 연산자</a>
+
+<hr>
+    <a href="/jstl_ex">JSTL 예제</a>
 </body>
 </html>
