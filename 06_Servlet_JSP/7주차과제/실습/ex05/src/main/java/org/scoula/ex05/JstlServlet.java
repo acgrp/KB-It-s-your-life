@@ -1,7 +1,7 @@
 package org.scoula.ex05;
 
 import org.edu.ex05.doman.Member;
-
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +24,8 @@ public class JstlServlet extends HttpServlet {
         }
         req.setAttribute("members", mambers);
         req.setAttribute("role", "ADMIN");
+
+        req.setAttribute("today", new Date());
 
         req.getRequestDispatcher("jstl_ex.jsp").forward(req, resp);
 
