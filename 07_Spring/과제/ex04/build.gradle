@@ -94,6 +94,22 @@ dependencies {
     implementation 'com.mysql:mysql-connector-j:9.3.0'    // MySQL JDBC 드라이버
     implementation 'com.zaxxer:HikariCP:3.4.5'            // Hikari 커넥션 풀 라이브러리
 
+
+    // JUnit 5 (테스트용)
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+
+    // Lombok (로그용)
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    // MySQL 드라이버
+    implementation 'com.mysql:mysql-connector-j:8.3.0'
+
+
+
 }
 
 // 테스트 실행 설정
