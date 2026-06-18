@@ -2,12 +2,19 @@ package org.scoula.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
+
 
 /**
  * 🌱 Root Application Context 설정 클래스
@@ -17,7 +24,11 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource({"classpath:/application.properties"})
+@MapperScan(basePackages = {"org.scoula.mapper"}) // Mapper 인터페이스 스캔 설정
 public class RootConfig {
+
+    @Autowired // DI
+    ApplicationContext applicationContext;
 
     // application.properties에서 데이터베이스 연결 정보 주입
     @Value("${jdbc.driver}")
@@ -57,5 +68,34 @@ public class RootConfig {
         // HikariDataSource 생성 및 반환
         HikariDataSource dataSource = new HikariDataSource(config);
         return dataSource;
+    }
+
+    /**
+     * SqlSessionFactory 빈 등록
+     * - MyBatis의 핵심 팩토리 객체를 스프링 컨테이너에 등록
+     *
+     * @param dataSource 위 dataSource() 메서드에서 등록된 bean이 주입됨
+     */
+    @Bean
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
+
+        // MyBatis 설정 파일 위치 지정
+        sqlSessionFactory.setConfigLocation(applicationContext.getResource("classpath:/mybatis-config.xml"));
+
+        // 데이터베이스 연결 설정
+        sqlSessionFactory.setDataSource(dataSource);
+
+        return sqlSessionFactory.getObject();
+    }
+
+    /**
+     * 트랜잭션 매니저 설정
+     * - 데이터베이스 트랜잭션을 스프링이 관리하도록 설정
+     */
+    @Bean
+    public DataSourceTransactionManager transactionManager() {
+        DataSourceTransactionManager manager = new DataSourceTransactionManager(dataSource());
+        return manager;
     }
 }
