@@ -15,8 +15,8 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc  // Spring MVC 기능 활성화 - 기본 핸들러 매핑, 뷰 리졸버 등 자동 설정
 @ComponentScan(basePackages = {
         "org.scoula.controller",      // 공통 컨트롤러 패키지
-        "org.scoula.ex03.controller",  // 프로젝트별 컨트롤러 패키지
-        "org.scoula.exception"         // 예외 처리 클래스 스캔 대상 추가
+        "org.scoula.exception",         // 예외 처리 클래스 스캔 대상 추가
+        "org.scoula.board.controller"    // BoardController 패키지 추가
 })
 // 지정된 패키지에서 @Component 어노테이션이 있는 클래스를 자동으로 빈으로 등록
 

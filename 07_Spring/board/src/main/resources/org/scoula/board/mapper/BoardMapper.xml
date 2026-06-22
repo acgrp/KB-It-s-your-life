@@ -16,4 +16,45 @@
         ]]>
     </select>
 
+    <!-- 단일 게시글 조회 -->
+    <select id="get" resultType="BoardVO">
+        select * from tbl_board where no = #{no}
+    </select>
+
+    <!--  Create(등록) 기능 구현 - selectKey 활용 -->
+    <insert id="create">
+        insert into tbl_board (title, content, writer)
+        values (#{title}, #{content}, #{writer})
+
+        <!--
+          생성된 PK 값을 BoardVO 객체의 no 필드에 설정
+           - LAST_INSERT_ID(): MySQL의 마지막 삽입 ID 조회 함수
+
+
+        <selectKey> 태그 : INSERT/UPDATE 시 사용할 키를 조회해서 파라미터의 지정된 필드에 대입
+        - resultType  : 반환되는 키의 타입
+        - ketProperty : VO 객체의 필드명
+        - keyColumn   : 컬럼명
+        - order       : BEFORE / AFTER
+    -->
+        <selectKey resultType="Long" keyProperty="no" keyColumn="no" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!-- 게시글 수정 처리 -->
+    <update id="update">
+        update tbl_board set
+        title = #{title},
+        content = #{content},
+        writer = #{writer},
+        update_date = now()    <!-- 수정 시간 자동 업데이트 -->
+        where no = #{no}
+    </update>
+
+    <!-- 게시글 삭제 처리 -->
+    <delete id="delete">
+        delete from tbl_board where no = #{no}
+    </delete>
+
 </mapper>
