@@ -1,9 +1,15 @@
 package org.scoula.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.security.Principal;
+import java.util.Collection;
 
 @Slf4j
 @RequestMapping("/security")
@@ -34,4 +40,15 @@ public class SecurityController {
         log.info("logout page");
     }
 
+    @GetMapping("/member")
+    public void doMember(Authentication authentication) {
+        // Principal에서 UserDetails 추출
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        String username = userDetails.getUsername();           // 사용자 ID
+        Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities(); // 권한 목록
+
+        log.info("사용자 ID: {}", username);
+        log.info("권한 목록: {}", authorities);
+    }
 }

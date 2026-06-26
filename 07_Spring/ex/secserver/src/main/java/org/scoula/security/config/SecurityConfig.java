@@ -1,21 +1,36 @@
 package org.scoula.security.config;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
-
 
 @Configuration
 @EnableWebSecurity  // Spring Security 활성화
 @Slf4j
+@MapperScan(basePackages = {"org.scoula.security.account.mapper"})  // 매퍼 스캔 설정
+@ComponentScan(basePackages = {"org.scoula.security"})    // 서비스 클래스 스캔
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    // 문자셋 필터 메서드
+    private final UserDetailsService userDetailsService;   // CustomUserDetailsService 주입
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();  // BCrypt 해시 함수 사용
+    }
+
     public CharacterEncodingFilter encodingFilter() {
         CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
         encodingFilter.setEncoding("UTF-8");           // UTF-8 인코딩 설정
@@ -25,18 +40,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        // // 1. 문자 인코딩 필터를 CSRF 필터보다 먼저 실행
         // CSRF 필터보다 앞에 인코딩 필터 추가
+        // - CSRF 필터는 Spring Security 환경에서 기본적으로 활성화 되어있음!
         http.addFilterBefore(encodingFilter(), CsrfFilter.class);
 
-        // 기본 설정으로 시작 - 모든 요청에 인증 필요 (삭제예정)
-//        http.authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .and()
-//                .logout();
-
-        // 경로별 접근 권한 설정
+        // 2. 경로별 접근 권한 설정
         http.authorizeRequests()
                 // 모든 사용자 허용
                 .antMatchers("/security/all").permitAll()
@@ -51,41 +60,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/board/write", "/board/modify", "/board/delete").authenticated();
 
 
-
+        // 3. 커스텀 로그인 설정
         // 폼 기반 로그인 활성화 (모든 설정이 기본값)
         http.formLogin()
-
                 // 커스텀 로그인 페이지 설정 (Security 기본 로그인 사용 X, 사용자가 만든 로그인 페이지 사용!)
                 .loginPage("/security/login")           // 로그인 폼 GET 요청 URL
                 .loginProcessingUrl("/security/login")  // 로그인 처리 POST 요청 URL
                 .defaultSuccessUrl("/");                // 로그인 성공 시 리다이렉트 URL
 
-        // 폼 기반 로그인 활성화
 
-        // 로그아웃 설정
+        // 4. 로그아웃 설정
         http.logout()
-                .logoutUrl("/security/logout")                    // POST: 로그아웃 요청 URL
-                .invalidateHttpSession(true)                      // 세션 무효화
-                .deleteCookies("remember-me", "JSESSION-ID")      // 쿠키 삭제
-                .logoutSuccessUrl("/security/logout");            // GET: 로그아웃 완료 후 이동할 페이지
-
+                .logoutUrl("/security/logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("remember-me", "JSESSION-ID")
+                .logoutSuccessUrl("/security/logout");
     }
 
-    // 테스트 사용자 정보 설정
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         log.info("configure .........................................");
 
-        // 관리자 계정 설정
-        auth.inMemoryAuthentication()
-                .withUser("admin")          // 사용자 ID
-                .password("{noop}1234")     // 비밀번호 ({noop}는 암호화 없음)
-                .roles("ADMIN");            // ROLE_ADMIN 권한 부여
-
-        // 일반 사용자 계정 설정
-        auth.inMemoryAuthentication()
-                .withUser("member")         // 사용자 ID
-                .password("{noop}1234")     // 비밀번호
-                .roles("MEMBER");           // ROLE_MEMBER 권한만 부여
+        // UserDetailsService와 PasswordEncoder 설정
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
     }
 }

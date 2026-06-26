@@ -15,6 +15,6 @@ public class HomeController {
     @GetMapping("/")
     public String home(){
         log.info("첫페이지 호출됨..------------------");
-        return "home";
+        return "index";
     }
 }
