@@ -1,0 +1,32 @@
+package org.scoula.member.controller;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.scoula.member.dto.MemberDTO;
+
+import org.scoula.member.dto.MemberJoinDTO;
+import org.scoula.member.service.MemberService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@Slf4j
+@RestController // 데이터(JSON, XML 등)를 그대로 응답하도록 만드는 어노테이션
+                // @Controller + @ResponseBody
+@RequiredArgsConstructor
+@RequestMapping("/api/member")
+public class MemberController {
+    final MemberService service;
+
+    // ID 중복 체크 API
+    @GetMapping("/checkusername/{username}")
+    public ResponseEntity<Boolean> checkUsername(@PathVariable String username) {
+        return ResponseEntity.ok().body(service.checkDuplicate(username));
+    }
+
+    // 회원가입 API
+    @PostMapping("")
+    public ResponseEntity<MemberDTO> join(MemberJoinDTO member) {
+        return ResponseEntity.ok(service.join(member));
+    }
+
+}
