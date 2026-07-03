@@ -30,6 +30,6 @@ export default defineConfig({
 
   // 빌드 설정
   build: {
-    outDir: '"C:/fullstack/08_Spring/0702/backend/src/main/webapp/resources',
+    outDir: 'C:/workspace/08_Vue_Spring/0703/backend/src/main/webapp/resources',
   },
 });
